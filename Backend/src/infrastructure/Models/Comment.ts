@@ -2,11 +2,7 @@ import mongoose from "mongoose";
 
 const commentSchema = new mongoose.Schema({
   blogId: {
-    type: Number,
-    required: true
-  },
-  id: {
-    type: Number,
+    type: String,
     required: true
   },
   name: {

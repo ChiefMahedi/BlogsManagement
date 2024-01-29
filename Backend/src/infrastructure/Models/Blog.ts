@@ -2,11 +2,7 @@ import mongoose from "mongoose";
 
 const blogSchema = new mongoose.Schema({
   userId: {
-    type: mongoose.Types.ObjectId,
-    required: true
-  },
-  id: {
-    type: mongoose.Types.ObjectId,
+    type: Number,
     required: true
   },
   title: {
@@ -16,6 +12,10 @@ const blogSchema = new mongoose.Schema({
   body: {
     type: String,
     required: true
+  },
+  comments:{
+    type: [String],
+    required: false
   }
 });
 
