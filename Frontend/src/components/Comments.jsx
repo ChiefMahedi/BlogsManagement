@@ -15,10 +15,14 @@ export default function Comments({ blogId }) {
         const localStorageComments = localStorage.getItem(`comments_${blogId}`);
         if (localStorageComments) {
           console.log("Comments found on localstorage");
-          setComments(JSON.parse(localStorageComments));
-          return; 
+          const parsedComments = JSON.parse(localStorageComments);
+          if (Array.isArray(parsedComments) && parsedComments.length > 0) {
+            setComments(parsedComments);
+            return;
+          }
         }
-        console.log("Comments was not found on localstorage");
+        console.log("Comments were not found or empty on localstorage");
+        
         const response = await fetch(`http://localhost:5000/api/comment/${blogId}`);
         
         if (!response.ok) {
